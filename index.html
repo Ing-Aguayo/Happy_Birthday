@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nivel 11: Dylan Isai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-orange: #ff9d00;
+            --bg-dark: #0a0a12;
+            --glass: rgba(16, 26, 46, 0.85);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Share Tech Mono', monospace; /* Fuente tipo código */
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            padding-bottom: 40px;
+        }
+
+        /* Efecto de luz de fondo fija */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(0, 243, 255, 0.15), transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Contenedor Principal (Celular) */
+        .container {
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* --- HEADER --- */
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .level-tag {
+            display: inline-block;
+            background: var(--neon-orange);
+            color: black;
+            font-weight: bold;
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-shadow: 0 0 15px var(--neon-orange);
+            transform: skew(-10deg); /* Inclinación futurista */
+            margin-bottom: 15px;
+        }
+
+        .avatar-box {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto;
+            border: 2px solid var(--neon-blue);
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
+            background: 0 0 25px rgba(0, 243, 255, 0.4);
+            position: relative;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 100%;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-top: 15px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px var(--neon-blue);
+            line-height: 1;
+        }
+        .subtitle {
+            color: var(--neon-blue);
+            letter-spacing: 3px;
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
+        /* --- TARJETAS DE MISIÓN --- */
+        .card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 5px solid var(--neon-blue);
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .icon {
+            font-size: 2rem;
+            filter: drop-shadow(0 0 5px white);
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+        }
+
+        .details {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+        .details strong { color: white; font-size: 1.1rem; }
+
+        /* Estilo Naranja para la Fiesta */
+        .card.party {
+            border-left-color: var(--neon-orange);
+        }
+        .card.party .card-title {
+            color: var(--neon-orange);
+        }
+
+        /* Botones de Mapa */
+        .btn-map {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .card.party .btn-map {
+            border-color: var(--neon-orange);
+            color: var(--neon-orange);
+        }
+        
+        .btn-map:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* --- BOTÓN FINAL RSVP --- */
+        .rsvp-section {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .btn-whatsapp {
+            display: block;
+            width: 100%;
+            background: var(--neon-orange);
+            color: black;
+            text-decoration: none;
+            padding: 18px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            box-shadow: 0 0 20px var(--neon-orange);
+            animation: pulse 1.5s infinite;
+            border: 2px solid white;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 10px var(--neon-orange); }
+            50% { transform: scale(1.03); box-shadow: 0 0 30px var(--neon-orange); }
+            100% { transform: scale(1); box-shadow: 0 0 10px var(--neon-orange); }
+        }
+
+        .footer-text {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            text-align: center;
+        }
+
+        /* Decoración Scanline (Línea que baja) */
+        .scanline {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: rgba(0, 243, 255, 0.5);
+            box-shadow: 0 0 15px var(--neon-blue);
+            animation: scan 6s linear infinite;
+            z-index: 99;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        @keyframes scan {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="scanline"></div>
+
+    <div class="container">
+        
+        <header class="header">
+            <div class="level-tag">NIVEL 11 DESBLOQUEADO</div>
+            
+            <div class="avatar-box">
+                <img src="imagen123.jpg" alt="Avatar Dylan" class="avatar-img">
+            </div>
+
+            <h1>DYLAN<br>ISAI</h1>
+            <div class="subtitle">RODRÍGUEZ VÁSQUEZ</div>
+        </header>
+
+        <div style="text-align: center; margin-bottom: 10px;">
+            <p style="color: #ccc;">Tu misión, si decides aceptarla, es celebrar conmigo.</p>
+        </div>
+
+        <article class="card">
+            <div class="card-header">
+                <div class="icon">⛪</div>
+                <div class="card-title">Ceremonia</div>
+            </div>
+            <div class="details">
+                <strong>Templo de la Bethel</strong><br>
+                (Nuestra Señora de la Reconciliación)<br>
+                <span style="color: var(--neon-blue);">🕐 1:00 PM</span><br>
+                <br>
+                C. Hacienda de Tala 4022, Villas de Guadalupe.
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Templo+de+la+Bethel+Hacienda+de+Tala+4022+Guadalajara" target="_blank" class="btn-map">
+                📍 VER MAPA
+            </a>
+        </article>
+
+        <article class="card party">
+            <div class="card-header">
+                <div class="icon">🎉</div>
+                <div class="card-title">La Fiesta</div>
+            </div>
+            <div class="details">
+                <strong>Terraza Babilonia</strong><br>
+                Comida, Pastel y Diversión.<br>
+                <span style="color: var(--neon-orange);">🕑 Después de misa</span><br>
+                <br>
+                Cocula 74, Lomas del Laurel I, Tonalá, Jal.
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Terraza+Babilonia+Cocula+74+Tonala+Jalisco" target="_blank" class="btn-map">
+                📍 VER UBICACIÓN
+            </a>
+        </article>
+
+        <div class="rsvp-section">
+            <p style="margin-bottom: 15px; font-size: 0.9rem;">CONFIRMA PARA UNIRTE AL SQUAD</p>
+            
+            <a href="https://wa.me/5213318223225?text=¡Misión%20Aceptada!%20Nos%20vemos%20en%20el%20Nivel%2011%20de%20Dylan%20🎮" class="btn-whatsapp">
+                ✅ CONFIRMAR ASISTENCIA
+            </a>
+        </div>
+
+        <div class="footer-text">LOADING NEXT LEVEL...</div>
+
+    </div>
+
+</body>
+</html>
